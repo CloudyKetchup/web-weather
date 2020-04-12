@@ -1,0 +1,8 @@
+.gradle
+.idea
+.vscode
+gradle
+build
+*/build
+*/gradle
+*/gradle/wrapper

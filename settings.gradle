@@ -1,0 +1,9 @@
+rootProject.name="web-weather"
+
+include ":account-service",
+        ":common-models",
+        ":database-service",
+        ":eureka-server",
+        ":gateway"
+include 'common-models'
+
