@@ -26,8 +26,9 @@ repositories {
 extra["springCloudVersion"] = "Hoxton.SR3"
 
 dependencies {
-	implementation("io.r2dbc:r2dbc-postgresql:0.8.2.RELEASE")
-	implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
+	implementation(project(":common-models"))
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.2.6.RELEASE")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
@@ -36,6 +37,7 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation("junit:junit:4.13")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
