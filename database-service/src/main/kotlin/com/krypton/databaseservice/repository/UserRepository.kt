@@ -21,6 +21,24 @@ interface UserRepository : ReactiveMongoRepository<User, UUID>
 	fun findByName(name : String) : Mono<User>
 
 	/**
+	 * Find user by email
+	 *
+	 * @param email	 user email
+	 * @return [Mono] with user
+	 * */
+	@Query("{ 'email' : ?0 }")
+	fun findByEmail(email : String) : Mono<User>
+
+	/**
+	 * Find user by email
+	 *
+	 * @param email	 user email
+	 * @return [Mono] with user
+	 * */
+	@Query("{ 'email' : ?0, 'password' : ?1 }")
+	fun findByEmailAndPassword(email : String, password : String) : Mono<User>
+
+	/**
 	 * Delete user by name
 	 *
 	 * @param name	user name
