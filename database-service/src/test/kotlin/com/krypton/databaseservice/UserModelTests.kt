@@ -18,10 +18,11 @@ class UserModelTests @Autowired constructor(
 	@Test
 	fun save()
 	{
-		userRepository.save(User(name = "CloudyKetchup", password = "1708"))
-			.subscribe {
-				System.err.println(it)
-			}
+		userRepository.save(User(
+			name = "CloudyKetchup",
+			email = "krypton@yahoo.com",
+			password = "1708")
+		).subscribe { System.err.println(it) }
 	}
 
 	@Test
@@ -51,9 +52,11 @@ class UserModelTests @Autowired constructor(
 	@Test
 	fun saveWithCities()
 	{
-		userRepository.save(User(name = "CitiesUser", password = "1708", cities = listOf("London", "Tokyo")))
-			.subscribe {
-				System.err.println(it)
-			}
+		userRepository.save(User(
+			name = "CitiesUser",
+			email = "cityuser@gmail.com",
+			password = "1708",
+			cities = listOf("London", "Tokyo")
+		)).subscribe { System.err.println(it) }
 	}
 }
