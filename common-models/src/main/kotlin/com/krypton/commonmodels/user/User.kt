@@ -1,6 +1,5 @@
 package com.krypton.commonmodels.user
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.krypton.commonmodels.jackson.SimpUserDeserializer
 import org.springframework.data.annotation.Id
@@ -15,7 +14,8 @@ data class User(
 	var id : UUID? = UUID.randomUUID(),
 	@Indexed(unique = true)
 	var name : String,
-	@JsonIgnore
+	@Indexed(unique = true)
+	var email : String,
 	var password : String,
 	var cities : List<String> = listOf()
 )

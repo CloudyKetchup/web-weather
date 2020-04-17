@@ -28,7 +28,8 @@ class SimpUserDeserializer : StdDeserializer<User>(User::class.java)
 		return User(
 			id = id,
 			name = tree.get("name").textValue(),
-			password = tree.get("password").textValue(),
-			cities = cities)
+			email = tree.get("email").textValue(),
+			password = "",
+			cities = cities).apply { tree.get("password")?.let { this.password = it.textValue() } }
 	}
 }
