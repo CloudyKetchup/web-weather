@@ -12,3 +12,5 @@ pluginManagement {
 	}
 }
 rootProject.name = "account-service"
+
+include(":common-models")

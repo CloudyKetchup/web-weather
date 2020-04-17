@@ -26,6 +26,8 @@ repositories {
 extra["springCloudVersion"] = "Hoxton.SR3"
 
 dependencies {
+	implementation(project(":common-models"))
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
