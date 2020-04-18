@@ -1,0 +1,65 @@
+.app-info
+{
+	display: flex;
+	right: 0;
+	bottom: 30px;
+	height: 50px;
+	width: 210px;
+	position: absolute;
+	animation-name: app-info-slide;
+	animation-duration: 0.2s;
+}
+
+.app-info > div:first-child
+{
+	height: 40px;
+	width: 40px;
+	padding: 5px;
+}
+
+.app-info > div:last-child
+{
+	height: 50px;
+	width: 150px;
+	text-align: center;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	margin-left: auto;
+	background: white;
+}
+
+.app-info > div:last-child span
+{
+	line-height: 50px;
+}
+
+.main-body, .main-body > div:first-child
+{
+	height: 100%;
+	width: 100%;
+}
+
+.main-body
+{
+	position: absolute;
+	z-index: 2;
+}
+
+.main-body > div:first-child
+{
+	position: relative;
+}
+
+@keyframes app-info-slide
+{
+	from
+	{
+		opacity: 0;
+		right: -50px;
+	}
+	to
+	{
+		opacity: 1;
+		right: 0;
+	}
+}
