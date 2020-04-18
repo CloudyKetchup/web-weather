@@ -1,10 +1,10 @@
-package com.krypton.accountservice
+package com.krypton.weatherprovider
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class AccountServiceApplicationTests {
+class WeatherProviderApplicationTests {
 
 	@Test
 	fun contextLoads() {
