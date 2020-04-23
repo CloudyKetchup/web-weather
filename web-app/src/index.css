@@ -1,6 +1,7 @@
 *
 {
   font-family: 'Rubik', sans-serif;
+  transition: 0.2s;
 }
 
 body, html
@@ -9,7 +10,8 @@ body, html
 	height: 100%
 }
 
-body {
+body
+{
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,9 +20,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+code
+{
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button
+{
+  cursor: pointer;
+}
+
+button, input
+{
+  outline: none;
+  border: none;
+}
+
+input
+{
+  height: 10px;
+  padding: 10px;
+  font-size: 13px;
+  border-bottom: 1px solid gray;
+}
+
+input:focus
+{
+  border-bottom: 2px solid black;
 }
 
 #root
