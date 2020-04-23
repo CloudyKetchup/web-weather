@@ -33,6 +33,39 @@
 	line-height: 50px;
 }
 
+.accoun-button-active
+{
+	background: white;
+}
+
+.account-button-active svg
+{
+	fill: #161616;
+}
+
+.account-button, .account-button-active
+{
+	width: 50px;
+	height: 50px;
+	right: 30px;
+	top: 30px;
+	border-radius: 100%;
+	padding: 10px;
+	position: absolute;
+	cursor: pointer;
+	transition: 0.05s;
+}
+
+.account-button
+{
+	background: black;
+}
+
+.account-button > svg
+{
+	fill: white;
+}
+
 .main-body, .main-body > div:first-child
 {
 	height: 100%;
