@@ -1,5 +1,5 @@
 export type RegistrationData = {
 	email : string,
-	nick : string,
+	name : string,
 	password : string,
 };
