@@ -66,7 +66,7 @@
 	fill: white;
 }
 
-.main-body, .main-body > div:first-child
+.main-body
 {
 	height: 100%;
 	width: 100%;
@@ -76,11 +76,6 @@
 {
 	position: absolute;
 	z-index: 2;
-}
-
-.main-body > div:first-child
-{
-	position: relative;
 }
 
 @keyframes app-info-slide
