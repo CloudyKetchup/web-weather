@@ -1,6 +1,9 @@
 import React, { useState, useEffect, CSSProperties, FC } from "react";
 
+import cookie from 'react-cookies'
+
 import AccountPane from "../AccountPane/AccountPane";
+import WeatherBody from "../WeatherBody/WeatherBody";
 
 import { ReactComponent as GithubIcon } from "../../assets/icons/github.svg";
 import { ReactComponent as AccountIcon } from "../../assets/icons/account.svg";
@@ -89,6 +92,7 @@ const MainBody = () =>
 
 	return (
 		<div className="main-body">
+			<WeatherBody cities={cookie.load("cities") || []}/>
 			<AccountButton
 				className={"account-button-active"}
 				onClick={toggleAccountPane}
