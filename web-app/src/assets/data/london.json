@@ -1,0 +1,22 @@
+{
+	"weather":{
+		"main":"Clear",
+		"description":"clear sky"
+	},
+	"temp":{
+		"temp":17.62,
+		"feelsLike":12.62,
+		"tempMin":16.0,
+		"tempMax":20.0,
+		"pressure":1009,
+		"humidity":45
+	},
+	"visibility":10000,
+	"wind":{
+		"speed":5.7,
+		"deg":100
+	},
+	"country":"GB",
+	"city":"London",
+	"cod":200
+}
