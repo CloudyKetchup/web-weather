@@ -1,0 +1,21 @@
+.weather-body
+{
+	margin-left: 7%;
+	width: 65%;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.weather-cards
+{
+	display: grid;
+	align-items: center;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 30px;
+	/* margin-top: 5%; */
+	padding-top: 5%;
+	padding-bottom: 30px;
+	width: 100%;
+	min-height: 70%;
+	overflow-x: hidden;
+}
