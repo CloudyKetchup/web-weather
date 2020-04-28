@@ -1,0 +1,18 @@
+.weather-loading-card
+{
+	display: block;
+	background: gray;
+	padding: 30px;
+	border-radius: 10px;
+	height: calc(100% - 60px);
+	width: calc(100% - 60px);
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.weather-loading-card *
+{
+	transition: unset;	
+}

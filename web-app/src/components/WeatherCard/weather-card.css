@@ -1,0 +1,126 @@
+.weather-card
+{
+	border-radius: 10px;
+	width: auto;
+	max-width: 450px;
+	height: 220px;
+	-webkit-box-shadow: 0px 11px 26px 0px rgba(0, 0, 0, 0.54);
+	-moz-box-shadow: 0px 11px 26px 0px rgba(0, 0, 0, 0.54);
+	box-shadow: 0px 11px 26px 0px rgba(0, 0, 0, 0.54);
+	cursor: pointer;
+	position: relative;
+	animation-name: weather-card-slide;
+	animation-duration: 0.2s;
+}
+
+.weather-card-footer
+{
+	background: rgba(0, 0, 0, 0.05);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: flex;
+	line-height: 50px;
+	padding-left: 20px;
+	font-weight: 600;
+	font-size: 20px;
+	height: 25%;
+	width: 100%;
+}
+
+.weather-card-footer > div:first-child
+{
+	color: white;
+	font-weight: 700;
+	margin-left: 10px;
+	line-height: 55px;
+	font-size: 20px;
+}
+
+.weather-card-footer > div:nth-child(2),
+.weather-card-footer > div:last-child
+{
+	margin-left: auto;
+	margin-top: 10px;
+}
+
+.weather-card-footer > div:last-child
+{
+	height: 25px;
+	width: 25px;
+	margin-left: 10px;;
+	margin-right: 40px;
+	margin-top: 7px;
+}
+
+.weather-card-footer svg
+{
+	fill: white;
+	height: 100%;
+	width: 100%;
+}
+
+.weather-status-icon
+{
+	height: 50px;
+	width: 50px;
+}
+
+.weather-status-icon svg, .weather-fail-retry svg
+{
+	height: 100%;
+	width: 100%;
+}
+
+.weather-fail-card
+{
+	border-radius: 10px;
+	height: 100%;
+	background: gray;
+	color: white;
+}
+
+.weather-fail-body
+{
+	display: block;
+	padding: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	word-break: break-word;
+	line-height: 30px;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.weather-fail-retry
+{
+	margin-left: 30px;
+	bottom: 30px;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+}
+
+.refresh-cloud
+{
+	fill: white;
+	stroke: white;
+}
+
+.weather-fail-retry *
+{
+	transition: unset;
+}
+
+@keyframes weather-card-slide
+{
+	from
+	{
+		opacity: 0;
+		margin-top: -20px;
+	}
+	to
+	{
+		opacity: 1;
+		margin-top: 0px;
+	}
+}

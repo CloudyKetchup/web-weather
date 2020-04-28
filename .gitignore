@@ -6,3 +6,5 @@ build
 */build
 */gradle
 */gradle/wrapper
+init-mongo.js
+mongo-volume

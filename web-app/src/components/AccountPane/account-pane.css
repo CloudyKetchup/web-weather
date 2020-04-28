@@ -1,0 +1,38 @@
+.account-pane
+{
+	min-width: 250px;
+	min-height: 150px;
+	top: 100px;
+	right: 30px;
+	background: white;
+	border-radius: 10px;
+	position: absolute;
+	animation-name: account-pane-slide;
+	animation-duration: 0.2s;
+}
+
+.account-pane-main
+{
+	text-align: center;
+}
+
+.account-pane-main > div:first-child
+{
+	padding: 10px;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+@keyframes account-pane-slide
+{
+	from
+	{
+		opacity: 0;
+		right: -50px;
+	}
+	to
+	{
+		opacity: 1;
+		right: 30px;
+	}
+}

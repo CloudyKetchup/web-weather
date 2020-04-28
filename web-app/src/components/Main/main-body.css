@@ -1,0 +1,93 @@
+.app-info
+{
+	display: flex;
+	right: 0;
+	bottom: 30px;
+	height: 50px;
+	width: 210px;
+	position: absolute;
+	animation-name: app-info-slide;
+	animation-duration: 0.2s;
+}
+
+.app-info > div:first-child
+{
+	height: 40px;
+	width: 40px;
+	padding: 5px;
+}
+
+.app-info > div:last-child
+{
+	height: 50px;
+	width: 150px;
+	text-align: center;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	margin-left: auto;
+	background: white;
+}
+
+.app-info > div:last-child span
+{
+	line-height: 50px;
+}
+
+.accoun-button-active
+{
+	background: white;
+}
+
+.account-button-active svg
+{
+	fill: #161616;
+}
+
+.account-button, .account-button-active
+{
+	width: 50px;
+	height: 50px;
+	right: 30px;
+	top: 30px;
+	border-radius: 100%;
+	padding: 10px;
+	position: absolute;
+	cursor: pointer;
+	transition: 0.05s;
+}
+
+.account-button
+{
+	background: black;
+}
+
+.account-button > svg
+{
+	fill: white;
+}
+
+.main-body
+{
+	height: 100%;
+	width: 100%;
+}
+
+.main-body
+{
+	position: absolute;
+	z-index: 2;
+}
+
+@keyframes app-info-slide
+{
+	from
+	{
+		opacity: 0;
+		right: -50px;
+	}
+	to
+	{
+		opacity: 1;
+		right: 0;
+	}
+}

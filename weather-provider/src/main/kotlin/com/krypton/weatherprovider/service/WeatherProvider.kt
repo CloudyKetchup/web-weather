@@ -15,7 +15,7 @@ class WeatherProvider : IWeatherProvider
 	override fun getByCity(cityName: String): Mono<WeatherApiResponse>
 	{
 		return client.get()
-			.uri("?q=$cityName&APPID=$apiKey")
+			.uri("?q=$cityName&APPID=$apiKey&units=metric")
 			.retrieve()
 			.bodyToMono(WeatherApiResponse::class.java)
 			.subscribeOn(Schedulers.elastic())
