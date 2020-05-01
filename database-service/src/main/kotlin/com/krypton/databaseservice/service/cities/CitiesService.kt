@@ -1,4 +1,4 @@
-package com.krypton.databaseservice.cities
+package com.krypton.databaseservice.service.cities
 
 import com.krypton.databaseservice.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
