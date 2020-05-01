@@ -1,5 +1,6 @@
 package com.krypton.databaseservice.config
 
+import com.krypton.databaseservice.routes.CitiesRouter
 import com.krypton.databaseservice.routes.UserRouter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -12,4 +13,7 @@ class WebConfig : WebFluxConfigurer
 {
 	@Bean
 	fun userController(userRouter : UserRouter) = userRouter.router
+
+	@Bean
+	fun citiesController(citiesRouter : CitiesRouter) = citiesRouter.router
 }

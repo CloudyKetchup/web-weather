@@ -1,7 +1,5 @@
 import React, { useState, useEffect, CSSProperties, FC } from "react";
 
-import cookie from 'react-cookies'
-
 import AccountPane from "../AccountPane/AccountPane";
 import WeatherBody from "../WeatherBody/WeatherBody";
 
@@ -66,11 +64,11 @@ const MainBody = () =>
 		{
 			if (accountPane)
 			{
-				await accountPaneSlideBack()
+				await accountPaneSlideBack();
 
 				accountPaneTimer = setTimeout(async () =>
 				{
-					setAccountPane(!accountPane)
+					setAccountPane(!accountPane);
 
 					accountPaneTimer && clearTimeout(accountPaneTimer);
 					accountPaneTimer = null;
@@ -92,7 +90,7 @@ const MainBody = () =>
 
 	return (
 		<div className="main-body">
-			<WeatherBody cities={cookie.load("cities") || []}/>
+			<WeatherBody/>
 			<AccountButton
 				className={"account-button-active"}
 				onClick={toggleAccountPane}

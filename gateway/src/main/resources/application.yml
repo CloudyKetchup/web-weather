@@ -10,6 +10,12 @@ spring:
           uri: lb://WEATHER-PROVIDER/
           predicates:
             - Path=/weather/**
+        - id: user-cities-db-route
+          uri: lb://DATABASE-SERVICE/
+          predicates:
+            - Path=/cities/**
+          filters:
+            - RewritePath=/cities, /user/cities
   application:
     name: gateway
 eureka:
