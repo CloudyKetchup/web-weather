@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { FC, useState, createContext } from "react";
+
+import cookie from "react-cookies";
 
 import { Account } from "../model/Account";
 
@@ -7,31 +9,31 @@ type IContext = {
 	setAccount : (account? : Account) => void
 };
 
-const AccountContext = React.createContext<IContext>({ setAccount : () => {} });
+const AccountContext = createContext<IContext>({ setAccount : () => {} });
 const AccountConsumer = AccountContext.Consumer
 
-type IState = { account : Account | undefined };
-
-class AccountProvider extends Component<{}, IState>
+const AccountProvider : FC = props =>
 {
-  state = { account : undefined }
+	const [account, setAccountState] = useState(cookie.load("account"));
 
-  setAccount = (account? : Account) => this.setState(prevState => ({ account }));
+	const setAccount = (account? : Account) =>
+	{
+		setAccountState(account);
 
-  render()
-  {
-    const { children } = this.props;
-    const { account } = this.state;
-    const { setAccount } = this;
+		if (account)
+		{
+			cookie.save("account", account, { path : "/" })
+		} else
+		{
+			cookie.remove("account");
+		}
+	};
 
-    return (
-      <AccountContext.Provider
-        value={{ account, setAccount }}
-      >
-        {children}
-      </AccountContext.Provider>
-    );
-  }
+	return (
+		<AccountContext.Provider value={{ account, setAccount }}>
+			{props.children}
+		</AccountContext.Provider>
+	);
 }
 
 export { AccountContext, AccountProvider, AccountConsumer };
