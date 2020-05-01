@@ -1,33 +1,40 @@
-import React, { FC, useState, useContext } from "react";
+import React, { FC, useState, useContext, useEffect } from "react";
 
-import cookie from 'react-cookies'
+import { Account } from "../../model/Account";
 
-import WeatherSearch from "../WeatherSearch/WeatherSearch";
-import WeatherCard from "../WeatherCard/WeatherCard";
+import WeatherSearch  from "../WeatherSearch/WeatherSearch";
+import WeatherCard    from "../WeatherCard/WeatherCard";
 
-import { CitiesContext } from "../../context/CitiesContext";
+import { CitiesContext }  from "../../context/CitiesContext";
+import { AccountContext } from "../../context/AccountContext";
+
+import CitiesServiceFactory from "../../factory/CitiesServiceFactory"
 
 import "./weather-body.css";
 
-const WeatherCards = () =>
-{
-	const { cities } = useContext(CitiesContext);
+const WeatherCards : FC<{ cities : string[] }> = props =>
+(
+	<div className="weather-cards">
+		{props.cities.map(city => <WeatherCard key={city} city={city}/>)}
+	</div>
+);
 
-	return (
-		<div className="weather-cards">
-			{cities.map(city => <WeatherCard key={city} city={city}/>)}
-		</div>
-	);
-};
+const getCitiesService = (account? : Account) => CitiesServiceFactory.getService(account);
 
-const WeatherBody : FC<{ cities? : string[] }> = props =>
+const WeatherBody = () =>
 {
-	const [cities, setCities] = useState<string[]>(props.cities || []);
+	const { account }												= useContext(AccountContext);
+	const [cities, setCities]								= useState<string[]>([]);
+	const [citiesService, setCitiesService] = useState(getCitiesService(account));
+
+	useEffect(() => { citiesService.getAll().then(setCities); }, [citiesService]);
+
+	useEffect(() => setCitiesService(getCitiesService(account)), [account]);
 
 	const addCity = (city : string) =>
 	{
 		const update = cities;
- 
+
 		if (!update.includes(city))
 		{
 			update.push(city);
@@ -49,12 +56,7 @@ const WeatherBody : FC<{ cities? : string[] }> = props =>
 		}
 	};
 
-	const saveCities = (update : string[]) =>
-	{
-		setCities([...update]);
-
-		cookie.save("cities", cities, { path: '/' });
-	};
+	const saveCities = (update : string[]) => citiesService.save(cities).then(setCities);
 
 	const citiesContext = {
 		cities 		: cities,
@@ -67,7 +69,7 @@ const WeatherBody : FC<{ cities? : string[] }> = props =>
 		<div className="weather-body">
 			<CitiesContext.Provider value={citiesContext}>
 				<WeatherSearch/>
-				<WeatherCards/>
+				<WeatherCards cities={cities}/>
 			</CitiesContext.Provider>
 		</div>
 	);
