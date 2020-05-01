@@ -24,7 +24,7 @@ services:
 
   # gateway service
   gateway:
-    container_name: gateway
+    container_name: weather_gateway
     build:
       context: ./gateway
       dockerfile: Dockerfile
