@@ -1,0 +1,96 @@
+version: '3'
+
+services:
+  # database (MongoDB)
+  mongo-db:
+    container_name: mongo_db
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: weather_app
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - 27017:27017
+
+  # eureka server
+  eureka-server:
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    networks:
+      - backend
+    ports:
+      - 8761:8761
+
+  # gateway service
+  gateway:
+    container_name: weather_gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    networks:
+      - backend
+      - gateway
+    ports:
+      - 8080:8080
+
+  # account service
+  account-service:
+    build:
+      context: ./account-service
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    networks:
+      - backend
+
+  # database service
+  database-service:
+    build:
+      context: ./database-service
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo-db
+      - eureka-server
+    network_mode: "host"
+
+  # weather provider service
+  weather-provider:
+    build:
+      context: ./weather-provider
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    networks:
+      - backend
+
+  # react app
+  web-app:
+    build:
+      context: ./web-app
+      dockerfile: Dockerfile
+    depends_on:
+      - gateway
+    environment:
+      REACT_APP_API_URL: http://gateway:8080
+    networks:
+      - gateway
+    ports:
+      - 80:80
+
+networks:
+  gateway:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  database-data:

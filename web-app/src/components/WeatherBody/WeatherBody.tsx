@@ -2,8 +2,9 @@ import React, { FC, useState, useContext, useEffect } from "react";
 
 import { Account } from "../../model/Account";
 
-import WeatherSearch  from "../WeatherSearch/WeatherSearch";
-import WeatherCard    from "../WeatherCard/WeatherCard";
+import WeatherSearch			from "../WeatherSearch/WeatherSearch";
+import WeatherCard				from "../WeatherCard/WeatherCard";
+import WeatherEmptyCards 	from "./WeatherEmptyCards/WeatherEmptyCards";
 
 import { CitiesContext }  from "../../context/CitiesContext";
 import { AccountContext } from "../../context/AccountContext";
@@ -13,11 +14,21 @@ import CitiesServiceFactory from "../../factory/CitiesServiceFactory"
 import "./weather-body.css";
 
 const WeatherCards : FC<{ cities : string[] }> = props =>
-(
-	<div className="weather-cards">
-		{props.cities.map(city => <WeatherCard key={city} city={city}/>)}
-	</div>
-);
+{
+	const { cities } = props; 
+
+	return (
+		<div className="weather-cards">
+			{
+				cities.length > 0
+				?
+				cities.map(city => <WeatherCard key={city} city={city}/>)
+				:
+				<WeatherEmptyCards/>
+			}
+		</div>
+	);
+};
 
 const getCitiesService = (account? : Account) => CitiesServiceFactory.getService(account);
 
@@ -31,32 +42,29 @@ const WeatherBody = () =>
 
 	useEffect(() => setCitiesService(getCitiesService(account)), [account]);
 
-	const addCity = (city : string) =>
+	const addCity = (city: string) =>
 	{
-		const update = cities;
-
-		if (!update.includes(city))
+		if (!cities.includes(city))
 		{
-			update.push(city);
+			cities.push(city);
 
-			saveCities(update);
+			saveCities();
 		}
 	};
 
 	const removeCity = (city : string) =>
 	{
-		const update = cities;
-		const index = update.indexOf(city);
+		const index = cities.indexOf(city);
 
 		if (index !== -1)
 		{
-			update.splice(index, 1);
+			cities.splice(index, 1);
 
-			saveCities(update);
+			saveCities();
 		}
 	};
 
-	const saveCities = (update : string[]) => citiesService.save(cities).then(setCities);
+	const saveCities = () => citiesService.save(cities).then(setCities);
 
 	const citiesContext = {
 		cities 		: cities,
