@@ -28,8 +28,8 @@ A web based weather application build with ReactJS and Spring Framework
   
 ### Requirements
 
-Docker
-Docker Compose
+ - Docker
+ - Docker Compose
 
 and that's it -_-
   
