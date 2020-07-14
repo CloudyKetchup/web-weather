@@ -25,3 +25,22 @@ A web based weather application build with ReactJS and Spring Framework
   - Synchronize weather
   - Login/Logout/Register
   - Storing cities list on account
+  
+### Requirements
+
+Docker
+Docker Compose
+
+and that's it -_-
+  
+#### Start client and server
+
+```bash
+docker-compose up
+```
+
+#### Start server only
+
+```bash
+docker-compose -f docker-compose-backend.yml up
+```
