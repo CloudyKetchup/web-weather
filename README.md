@@ -1,4 +1,4 @@
-# web-weather
+# React weather
 
 Minimal web weather app
 
